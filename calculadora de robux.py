@@ -1,4 +1,4 @@
-# Calculadora de Robux com menu repetitivo
+# Calculadora de Robux
 TAXA = 0.07375
 senha = 123
 
