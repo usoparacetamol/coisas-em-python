@@ -1,42 +1,31 @@
-# Calculadora de Robux
 TAXA = 0.07375
-senha = 123
 
-print("=== Calculadora de Robux ===")
-print("Digite 'rbx' para calcular pelo número de Robux.")
-print("Digite 'r' para calcular pelo valor em reais.")
-print("Digite 'sair' para encerrar.\n")
+print("Calculadora de Robux \nOpções: 'rbx', 'r', 'sair' (ou a senha)")
+
+respostas = {
+    "123": "Você descobriu a senha! Opções secretas: (sla/oi/pq vc fez uma calculadora de robux?)",
+    "pq vc fez uma calculadora de robux?": "As calculadoras da internet são limitadas; fiz para treinar e ajudar.",
+    "sla": "entao decida e volte depois",
+    "oi": "tchau"
+}
 
 while True:
-    opcao = input("Escolha uma opção (rbx/r/sair): ").lower().strip()
+    op = input("\nEscolha uma opção: ").lower().strip()
 
-    if opcao == "rbx":
-        quantidade = float(input("Quantos Robux você quer comprar? "))
-        custo = quantidade * TAXA
-        print(f"💰 Isso vai custar R${custo:.2f} reais.\n")
-
-    elif opcao == "123":
-         print("voce descobriu a senha, as opcoes secretas sao (sla/oi/pq vc fez uma calculadora de robux?)")
-
-    elif opcao == "r":
-        reais = float(input("Quantos reais você vai gastar? "))
-        robux = reais / TAXA
-        print(f"🎮 Com R${reais:.2f} você compra {robux:.0f} Robux.\n")
-            
-    elif opcao == "sla":
-         print("Entao decida e volte depois")
-         break
-         
-    elif opcao == "pq vc fez uma calculadora de robux?":
-         print("a maioria das calculadoras da internet sao apenas para voce comprar robux, e nao calcular de verdade. vendo isso decidi fazer, e tambem, tava querendo treinar python")
-
-    elif opcao == "oi":
-         print("tchau")
-         break
-
-    elif opcao == "sair":
-        print("👋 Encerrando a calculadora.")  
+    if op == "sair" or op in ["sla", "oi"]:
+        print(respostas.get(op, "👋 Encerrando."))
         break
-
+    
+    if op == "rbx":
+        qtd = float(input("Quantos Robux? "))
+        print(f"💰 Custo: R${qtd * TAXA:.2f}")
+    
+    elif op == "r":
+        reais = float(input("Quantos reais? "))
+        print(f"🎮 Você recebe: {reais / TAXA:.0f} Robux")
+    
+    elif op in respostas:
+        print(respostas[op])
+    
     else:
-        print("⚠️ Opção inválida! Digite apenas 'rbx', 'r' ou 'sair'.\n")
+        print("⚠️ Opção inválida!")
